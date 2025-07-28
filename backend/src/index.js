@@ -16,7 +16,9 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.NODE_ENV === "production" 
+      ? ["https://your-app-name.onrender.com", "http://localhost:5173"]
+      : "http://localhost:5173",
     credentials: true,
   })
 );
