@@ -26,15 +26,14 @@ app.use("/api/messages", messageRoutes);
 
 const PORT = process.env.PORT;
 
-const __dirname = path.resolve();
+const __dirname = path.resolve(); // for ES modules
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname), "../frontend/dist"));
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
-  });
-}
+// If you have a catch-all route for SPA:
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+});
 
 server.listen(PORT, () => {
   console.log("Server in running on PORT:" + PORT);
