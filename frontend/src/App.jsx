@@ -31,16 +31,16 @@ function App() {
       <Navbar />
       <Routes>
         <Route
-          path="/"
+          path="/messages"
           element={authUser ? <HomePage /> : <Navigate to="/login" />}
         />
         <Route
           path="/signup"
-          element={!authUser ? <SignUpPage /> : <Navigate to="/" />}
+          element={!authUser ? <SignUpPage /> : <Navigate to="/messages" />}
         />
         <Route
           path="/login"
-          element={!authUser ? <LoginPage /> : <Navigate to="/" />}
+          element={!authUser ? <LoginPage /> : <Navigate to="/messages" />}
         />
         <Route
           path="/profile"
